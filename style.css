@@ -1,4 +1,5 @@
 @import url(./styles/pages/login.page.css);
+@import url(./styles/components/header.component.css);
 
 body {
     margin: 0;

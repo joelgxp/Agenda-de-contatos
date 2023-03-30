@@ -11,7 +11,8 @@ const eventos = () => {
         const dados = Object.fromEntries(fd)
         PostAuth(dados)
             .then(({data}) => {
-                console.log(data)
+                window.sessionStorage.setItem('@token', data.token)
+                window.location.href = '#contacts'
             })
             .catch(({data}) => { // desestruturação
                 console.log(data.nome)
