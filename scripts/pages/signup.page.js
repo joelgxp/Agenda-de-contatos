@@ -9,6 +9,7 @@ const eventos = () => {
 
         const fd = new FormData(signup)
         const dados = Object.fromEntries(fd)
+        
         PostSignup(dados)
             .then((sucesso) => {
                 console.log(sucesso.data.nome)

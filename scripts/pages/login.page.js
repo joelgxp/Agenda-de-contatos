@@ -9,6 +9,7 @@ const eventos = () => {
 
         const fd = new FormData(login)
         const dados = Object.fromEntries(fd)
+        
         PostAuth(dados)
             .then(({data}) => {
                 console.log(data)
@@ -21,11 +22,11 @@ const eventos = () => {
 
 export const Login = () => {
     login.innerHTML = `
-        <label for="email">E-mail</label>
-        <input type="email" name="email">
+        <label for="usuario">E-mail</label>
+        <input type="email" name="email" id="email">
 
         <label for="senha">Senha</label>
-        <input type="password" name="senha">
+        <input type="password" name="senha" id="senha">
 
         <fieldset>
             <input type="checkbox" name="salvar" id="salvar"  value="salvar">
@@ -33,6 +34,11 @@ export const Login = () => {
         </fieldset>
 
         <button type="submit">Entrar</button>
+
+        <br>
+        <p>Não tem conta? 
+        <a href="#signup"> Crie aqui</a>
+        </p>
     `
     eventos()
     return login
