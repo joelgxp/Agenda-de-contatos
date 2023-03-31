@@ -2,18 +2,24 @@ const header = document.createElement('header')
 header.setAttribute('id', 'c-header')
 
 const eventos = () => {
-    const sair = header.addEventListener('click', (e) => {
+    const sair = header.querySelector('a')
+    
+    sair.addEventListener('click', (e) => {
         e.preventDefault()
-        console.log("Clicou no sair!")
+        sessionStorage.removeItem('@user')
+        sessionStorage.removeItem('@token')
+        window.location.href = '/#login'
+        window.location.reload()
     })
 }
 
 export const Header = () => {
+    const usuario = JSON.parse(sessionStorage.getItem('@user'))
     header.innerHTML = `
-        <span>Samir</span>
-        <a href="#login">Sair</a>
+        <span>${usuario?.nome}</span>
+        <a href="/#login">Sair</a>
     `
-
+    
     eventos()
     return header
 }

@@ -1,18 +1,18 @@
-import { cardContact } from "../components/card-contact.component.js"
+import { CardContact } from "../components/card-contact.component.js"
 import { Header } from "../components/header.component.js"
-import { PostGetAllContacts } from "../services/contatact.service.js"
+import { getAllContacts } from "../services/contact.service.js"
 
 const root = document.querySelector('#root')
 const contacts = document.createElement('div')
 contacts.setAttribute('id', 'p-contacts')
 
 const eventos = () => {
-    PostGetAllContacts()
+    getAllContacts()
         .then(({data}) => {
             const divContatos = contacts.querySelector('#contatos')
             // data é um array de contatos então eu tenho contato como item
             data.forEach(contato => {
-                const cardContact = cardContact(contato)
+                const cardContact = CardContact(contato)
                 divContatos.appendChild(cardContact)
             });
             //console.log(sucesso)
@@ -23,8 +23,11 @@ const eventos = () => {
 }
 
 export const Contacts = () => {
+    window.location.href = '/#contacts'
 
-    root.append(Header)
+    const componenteHeader = Header()
+    root.append(componenteHeader)
+
     contacts.innerHTML = `
         <h1>Contatos</h1>
         <div id="contatos"></div>

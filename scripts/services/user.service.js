@@ -4,8 +4,9 @@ const headers = new Headers()
 headers.append('content-type', 'application/json')
 
 export const PostSignup = async (dados) => {
+    const url = urlBase + 'user'
 
-    const resposta = await fetch(urlBase + 'user', {
+    const resposta = await fetch(url, {
         headers,
         method: 'POST',
         body: JSON.stringify(dados)
