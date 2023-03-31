@@ -9,7 +9,7 @@ function redirectPage() {
         "#login": { component: Login, private: false},
         "#404": { component: NotFound, private: false},
         "#signup": {component: Signup, private: false},
-        "#update": {component: Update, private: false}
+        "#contacts": {component: Contacts, private: false}
     }
 
     const route = ROUTER[window.location.hash] || ROUTER['#404']

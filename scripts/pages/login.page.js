@@ -1,4 +1,4 @@
-import { PostAuth } from "../services/auth.service.js"
+import { AuthService } from "../services/auth.service.js"
 
 const login = document.createElement('form')
 login.setAttribute('id', 'p-login')
@@ -10,12 +10,13 @@ const eventos = () => {
         const fd = new FormData(login)
         const dados = Object.fromEntries(fd)
         
-        PostAuth(dados)
+        AuthService(dados)
             .then(({data}) => {
-                console.log(data)
+                sessionStorage.setItem('@token', data.token)
+                location.href = '#contacts'
             })
             .catch(({data}) => { // desestruturação
-                console.log(data.nome)
+                console.log(erro)
             })
     })
 }
