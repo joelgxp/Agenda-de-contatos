@@ -53,7 +53,7 @@ const eventos = () => {
                 window.open('/#contacts', '_self')
             })
             .catch((erro) => {
-                //console.error(erro)
+                console.error(erro)
             })
     })
 }

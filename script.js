@@ -1,7 +1,7 @@
 import { NotFound } from './scripts/pages/404.page.js'
 import {Login} from './scripts/pages/login.page.js'
 import { Signup } from './scripts/pages/signup.page.js'
-import { Update } from './scripts/pages/update.page.js'
+import { Update } from './scripts/pages/update.user.page.js'
 import { Contacts } from './scripts/pages/contacts.page.js'
 import { AddContact } from './scripts/pages/add-contact.page.js'
 import { ContactDetails } from './scripts/pages/contact-details.page.js'

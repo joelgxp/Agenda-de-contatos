@@ -16,7 +16,7 @@ export const getAllContacts = async () => {
 }
 
 export const getContact = async (idContato) => {
-    const url = urlBase + 'contact'
+    const url = urlBase + `contact/${idContato}`
     headers.append('Authorization', `${sessionStorage.getItem('@token')}`)
 
     const resposta = await fetch(url, {
@@ -52,13 +52,15 @@ export const patchContact = async () => {
     return await resposta.json()
 }
 
-export const deleteContact = async () => {
+export const deleteContact = async (idContato) => {
+    console.log(typeof(idContato))
     const url = urlBase + 'contact'
     headers.append('Authorization', `${sessionStorage.getItem('@token')}`)
 
     const resposta = await fetch(url, {
         headers,
-        method: 'DELETE'
+        method: 'DELETE',
+        body: JSON.stringify(idContato)
     })
 
     return await resposta.json()
