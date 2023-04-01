@@ -2,10 +2,11 @@ const urlBase = 'http://localhost:5000/v1/'
 
 const headers = new Headers()
 headers.append('content-type', 'application/json')
+headers.append('Authorization', `${sessionStorage.getItem('@token')}`)
 
 export const getAllContacts = async () => {
     const url = urlBase + 'contact'
-    headers.append('Authorization', `${sessionStorage.getItem('@token')}`)
+    //headers.append('Authorization', `${sessionStorage.getItem('@token')}`)
 
     const resposta = await fetch(url, {
         headers,
@@ -17,7 +18,7 @@ export const getAllContacts = async () => {
 
 export const getContact = async (idContato) => {
     const url = urlBase + `contact/${idContato}`
-    headers.append('Authorization', `${sessionStorage.getItem('@token')}`)
+    //headers.append('Authorization', `${sessionStorage.getItem('@token')}`)
 
     const resposta = await fetch(url, {
         headers,
@@ -29,7 +30,7 @@ export const getContact = async (idContato) => {
 
 export const postContact = async (dados) => {
     const url = urlBase + 'contact'
-    headers.append('Authorization', `${sessionStorage.getItem('@token')}`) // avaliar funcionamento
+    //headers.append('Authorization', `${sessionStorage.getItem('@token')}`) // avaliar funcionamento
 
     const resposta = await fetch(url, {
         headers,
@@ -42,7 +43,7 @@ export const postContact = async (dados) => {
 
 export const patchContact = async () => {
     const url = urlBase + 'contact'
-    headers.append('Authorization', `${sessionStorage.getItem('@token')}`)
+    //headers.append('Authorization', `${sessionStorage.getItem('@token')}`)
 
     const resposta = await fetch(url, {
         headers,
@@ -53,14 +54,13 @@ export const patchContact = async () => {
 }
 
 export const deleteContact = async (idContato) => {
-    console.log(typeof(idContato))
     const url = urlBase + 'contact'
-    headers.append('Authorization', `${sessionStorage.getItem('@token')}`)
+   // headers.append('Authorization', `${sessionStorage.getItem('@token')}`)
 
     const resposta = await fetch(url, {
         headers,
         method: 'DELETE',
-        body: JSON.stringify(idContato)
+        body: JSON.stringify({idContato})
     })
 
     return await resposta.json()

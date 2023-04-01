@@ -14,7 +14,7 @@ const eventos = (contato, clonedCardContact) => {
                 deleteContact(contato.id)
                     .then(() => {
                         clonedCardContact.remove()
-                        //window.location.reload()
+                        window.location.reload()
                     })
                     .catch((erro) => {
                         console.log(erro)
