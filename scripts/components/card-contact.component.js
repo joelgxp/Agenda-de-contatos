@@ -1,11 +1,21 @@
 const cardContact = document.createElement('div')
-cardContact.setAttribute('class', 'c-card-contact')
+cardContact.classList.add('c-card-contact')
+
+const eventos = (contato) => {
+    const [anchorDelete] = cardContact.querySelectorAll('a')
+
+    anchorDelete.addEventListener('click', (e) => {
+        e.preventDefault()
+        window.confirm(`Deseja deletar o contato ${contato.nome}?`)
+    })
+}
 
 export const CardContact = (contato) => {
     cardContact.innerHTML = `
-        <p>${contato.nome}</>
-        <a href="contact-detail">Visualizar</a>
+        <p>${contato.nome}</p>
+        <a href="#contact-details">Visualizar</a>
     `
 
+    eventos()
     return cardContact.cloneNode(true)
 }

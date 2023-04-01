@@ -15,7 +15,7 @@ export const getAllContacts = async () => {
     return await resposta.json()
 }
 
-export const getContact = async () => {
+export const getContact = async (idContato) => {
     const url = urlBase + 'contact'
     headers.append('Authorization', `${sessionStorage.getItem('@token')}`)
 
@@ -27,13 +27,14 @@ export const getContact = async () => {
     return await resposta.json()
 }
 
-export const postContact = async () => {
+export const postContact = async (dados) => {
     const url = urlBase + 'contact'
-    headers.append('Authorization', `${sessionStorage.getItem('@token')}`)
+    headers.append('Authorization', `${sessionStorage.getItem('@token')}`) // avaliar funcionamento
 
     const resposta = await fetch(url, {
         headers,
-        method: 'POST'
+        method: 'POST',
+        body: JSON.stringify(dados)
     })
 
     return await resposta.json()

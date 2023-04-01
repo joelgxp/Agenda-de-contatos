@@ -15,7 +15,6 @@ const eventos = () => {
                 const cardContact = CardContact(contato)
                 divContatos.appendChild(cardContact)
             });
-            //console.log(sucesso)
         })
         .catch((erro) => {
             console.log(erro)
