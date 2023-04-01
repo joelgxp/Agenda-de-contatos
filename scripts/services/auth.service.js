@@ -3,7 +3,7 @@ const urlBase = 'http://localhost:5000/v1/'
 const headers = new Headers()
 headers.append('content-type', 'application/json')
 
-export const PostAuth = async (dados) => {
+export const postAuth = async (dados) => {
     const url = urlBase + 'auth'
 
     const resposta = await fetch(url, {

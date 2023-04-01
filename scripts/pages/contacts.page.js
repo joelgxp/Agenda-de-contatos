@@ -8,7 +8,7 @@ contacts.setAttribute('id', 'p-contacts')
 
 const eventos = () => {
     getAllContacts()
-        .then(({data}) => {
+        .then(({ data }) => {
             const divContatos = contacts.querySelector('#contatos')
             // data é um array de contatos então eu tenho contato como item
             data.forEach(contato => {
@@ -23,13 +23,14 @@ const eventos = () => {
 }
 
 export const Contacts = () => {
-    window.location.href = '/#contacts'
 
-    const componenteHeader = Header()
-    root.append(componenteHeader)
+    root.append(Header())
 
     contacts.innerHTML = `
-        <h1>Contatos</h1>
+        <div id="cabecalho">
+            <h1>Contatos</h1>
+            <a href="/#add-contact">Adicionar contato</a>
+        </div>
         <div id="contatos"></div>
     `
 

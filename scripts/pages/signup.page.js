@@ -1,4 +1,4 @@
-import { PostSignup } from "../services/user.service.js"
+import { postUser } from "../services/user.service.js"
 
 const signup = document.createElement('form')
 signup.setAttribute('id', 'p-signup')
@@ -11,25 +11,23 @@ const eventos = () => {
 
         const fd = new FormData(signup)
         const dados = Object.fromEntries(fd)
-        PostSignup(dados)
+
+        postUser(dados)
             .then((resposta) => {
                 if(resposta.status === 409) {
                     mensagem.innerText = resposta.mensagem
-                    // após 3 segundos limpa a mensagem
-                    setTimeout(() => {
-                        mensagem.innerText = null
-                    }, 3000)
+                    // // após 3 segundos limpa a mensagem
+                    // setTimeout(() => {
+                    //     mensagem.innerText = null
+                    // }, 3000)
 
                 } else if(resposta.status === 200) {
-                    window.location.href = '#login'
+                    window.location.href = '/#login'
                 }
-                console.log(resposta)
             })
             .catch((erro) => {
                 mensagem.innerText = 'Erro interno, tente novamente mais tarde!'
-                console.error(erro)
             })
-
     })
 }
 
@@ -46,6 +44,10 @@ export const Signup = () => {
 
         <button type="submit">Cadastrar</button>
         <span></span>
+
+        <br>
+        <p>Já possui conta?<a href="/#login"> Entre aqui!</a></p>
+        <br>
     `
     eventos()
     return signup

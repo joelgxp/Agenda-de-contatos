@@ -1,4 +1,4 @@
-import { PostSignup } from "../services/user.service.js"
+import { patchUser } from "../services/user.service.js"
 
 const update = document.createElement('form')
 update.setAttribute('id', 'p-update')
@@ -9,7 +9,7 @@ const eventos = () => {
 
         const fd = new FormData(update)
         const dados = Object.fromEntries(fd)
-        PostSignup(dados)
+        patchUser(dados)
             .then((sucesso) => {
                 console.log(sucesso.data.nome)
             })

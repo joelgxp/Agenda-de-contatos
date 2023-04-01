@@ -19,17 +19,17 @@ function redirectPage() {
     const root = document.querySelector('#root')
 
     if(route.private !== undefined) {
-        const ehPrivadoNaoLogado = route.private && !sessionStorage.getItem('@token')
+        const ehPrivadoNaoLogado = route.private === true && !sessionStorage.getItem('@token')
 
         if(ehPrivadoNaoLogado) {
-            window.location.href = '#login'
+            window.location.href = '/#login'
             return
         }
     
-        const ehPublicoLogado = route.private && sessionStorage.getItem('@token')
+        const ehPublicoLogado = route.private === false && sessionStorage.getItem('@token')
     
         if(ehPublicoLogado) {
-            window.location.href = '#contacts'
+            window.location.href = '/#contacts'
             return
         }
     }
@@ -41,7 +41,7 @@ function redirectPage() {
 window.addEventListener('load', () => {
 
     if(!window.location.hash) {
-        window.location.href = '#login'
+        window.location.href = '/#login'
     }
     
     redirectPage()

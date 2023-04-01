@@ -1,5 +1,4 @@
-import { Header } from "../components/header.component.js"
-import { PostAuth } from "../services/auth.service.js"
+import { postAuth } from "../services/auth.service.js"
 
 const login = document.createElement('form')
 login.setAttribute('id', 'p-login')
@@ -10,29 +9,28 @@ const eventos = () => {
 
         const fd = new FormData(login)
         const dados = Object.fromEntries(fd)
-        PostAuth(dados)
+
+        postAuth(dados)
             .then(({data}) => { // desestruturação
                 const{token, ...dadosUsuarios} = data
                 window.sessionStorage.setItem('@user', JSON.stringify(dadosUsuarios))
                 window.sessionStorage.setItem('@token', token)
                 window.location.href = '/#contacts'
             })
-            .catch((erro) => { // desestruturação
+            .catch((erro) => {
                 console.log(erro)
             })
     })
 }
 
 export const Login = () => {
-    const root = document.querySelector('#root')
-    root.append(Header())
 
     login.innerHTML = `
         <label for="email">E-mail</label>
-        <input type="email" name="email">
+        <input type="email" name="email" required>
 
         <label for="senha">Senha</label>
-        <input type="password" name="senha">
+        <input type="password" name="senha" required>
 
         <fieldset>
             <input type="checkbox" name="salvar" id="salvar" value="salvar">
