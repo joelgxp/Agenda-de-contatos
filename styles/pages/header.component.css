@@ -1,4 +1,4 @@
-#c-header {
+#c-card-contact {
     display: flex;
     background-color: blueviolet;
     color: white;
@@ -6,6 +6,6 @@
     padding: 10px;
 }
 
-#c-header a {
+#c-card-contact a {
     color: white;
 }

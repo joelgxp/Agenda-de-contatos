@@ -25,10 +25,11 @@ const eventos = (contato, clonedCardContact) => {
 
 export const CardContact = (contato) => {
     cardContact.innerHTML = `
-        <p>${contato.nome}</p>
+        <p>${contato.nome}
 
         <a href="/#contacts">Deletar</a>
         <a href="/?id-contact=${contato.id}#contact-details">Visualizar</a>
+        </p>
     `
     console.log(contato)
     /* 
